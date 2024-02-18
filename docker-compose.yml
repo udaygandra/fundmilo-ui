@@ -1,0 +1,77 @@
+# version: '3.1'
+# services:
+
+#   # PostgreSQL database service
+#   db:
+#     image: postgres:latest
+#     container_name: postgresdb
+#     ports:
+#       - "5432:5432"
+#     environment:
+#       POSTGRES_DB: localdb
+#       POSTGRES_USER: localuser
+#       POSTGRES_PASSWORD: passw0rd
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data
+#     networks:
+#       - my-network
+
+#   # Next.js app service
+#   app:
+#     build:
+#       context: .
+#     volumes:
+#     - .:/app
+#     ports:
+#       - "3000:3000"
+#     depends_on:
+#       - db
+#     environment:
+#       - DATABASE_URL=postgresql://localuser:passw0rd@db:5432/localdb?schema=public&connect_timeout=300 # Use the service name as the host
+#     networks:
+#       - my-network
+
+# volumes:
+#   postgres_data:
+#     driver: local
+
+# networks:
+#   my-network:
+
+
+version: '3.1'
+services:
+
+  # PostgreSQL database service
+  db:
+    image: postgres:latest
+    container_name: postgresdb
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: localdb
+      POSTGRES_USER: localuser
+      POSTGRES_PASSWORD: passw0rd
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - my-network
+
+  # # Prisma service
+  # prisma:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.prisma
+  #   depends_on:
+  #     - db
+  #   environment:
+  #     - DATABASE_URL=postgresql://localuser:passw0rd@db:5432/localdb?schema=public&connect_timeout=300
+  #   networks:
+  #     - my-network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  my-network:

@@ -1,0 +1,15 @@
+# Use the official Node.js image as the base image
+FROM node:20
+
+WORKDIR /app
+
+# Copy the Prisma schema and package.json to the container
+COPY prisma/ /app/prisma/
+COPY package.json /app/package.json
+COPY package-lock.json /app/package-lock.json
+
+# Install Prisma globally
+RUN npm install -g prisma
+
+# Initialize Prisma and generate the client
+RUN prisma generate
