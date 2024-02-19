@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "@/components/ui/toaster"
 import NextAuthProvider from './sessionprovider'
 
 export const metadata: Metadata = {
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <SiteHeader />
               <div className="flex-1">{children}</div>
             </div>
+            <Toaster />
             <TailwindIndicator />
             </NextAuthProvider>
           </ThemeProvider>

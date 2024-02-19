@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
+    "devTurbo": "next dev --turbo",
     "build": "next build",
     "start": "next start",
+    "dbstart"  : "docker-compose up -d && npx prisma generate && prisma migrate dev --name init",
     "startdocker": "docker-compose up -d && npx prisma generate && prisma migrate dev --name init && next dev --turbo",
     "lint": "next lint"
   },
