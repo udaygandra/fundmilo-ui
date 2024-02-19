@@ -18,7 +18,7 @@ export function SiteHeader() {
         <div className="flex flex-1 items-center justify-end space-x-4">
           <nav className="flex items-center space-x-1">
             <div className="sticky m-10">
-            {/* <PostCreateButton/> */}
+            {session && <PostCreateButton/>}
             </div>
             {!session && (
               <Link href="/login">
